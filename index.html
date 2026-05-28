@@ -1,0 +1,1296 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="Pyone Yadanar Paing — Epidemiologist & PhD Health Metrics Researcher at IHME, University of Washington. Small area estimation, Bayesian methods, health equity, Tribal data sovereignty.">
+<title>Pyone Yadanar Paing | Epidemiologist & Health Metrics Researcher</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --teal:       #0D7E6E;
+    --teal-lt:    #12A090;
+    --teal-pale:  #E8F5F2;
+    --navy:       #0F2D45;
+    --navy-mid:   #1B4060;
+    --ink:        #1A2530;
+    --mute:       #5C7080;
+    --sand:       #F7F4EF;
+    --warm:       #EDE8DF;
+    --white:      #FFFFFF;
+    --accent:     #C8633A;
+    --gold:       #B8962E;
+  }
+
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--sand);
+    color: var(--ink);
+    line-height: 1.65;
+    overflow-x: hidden;
+  }
+
+  /* ── NAV ─────────────────────────────────────────────────────────── */
+  nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 3rem;
+    height: 64px;
+    background: rgba(15,45,69,0.97);
+    backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(13,126,110,0.3);
+  }
+
+  .nav-logo {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--white);
+    text-decoration: none;
+    letter-spacing: 0.02em;
+  }
+
+  .nav-logo span { color: var(--teal-lt); }
+
+  .nav-links {
+    display: flex; gap: 2.5rem; list-style: none;
+  }
+
+  .nav-links a {
+    color: rgba(255,255,255,0.75);
+    text-decoration: none;
+    font-size: 0.88rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    transition: color 0.2s;
+  }
+  .nav-links a:hover { color: var(--teal-lt); }
+
+  .nav-cv {
+    background: var(--teal);
+    color: var(--white) !important;
+    padding: 0.45rem 1.1rem;
+    border-radius: 4px;
+    font-size: 0.82rem !important;
+    transition: background 0.2s !important;
+  }
+  .nav-cv:hover { background: var(--teal-lt) !important; color: var(--white) !important; }
+
+  /* ── HERO ────────────────────────────────────────────────────────── */
+  #hero {
+    min-height: 100vh;
+    display: grid;
+    grid-template-columns: 1fr 420px;
+    gap: 4rem;
+    align-items: center;
+    padding: 120px 5rem 80px;
+    background:
+      radial-gradient(ellipse 80% 60% at 70% 50%, rgba(13,126,110,0.08) 0%, transparent 70%),
+      radial-gradient(ellipse 50% 80% at 10% 80%, rgba(15,45,69,0.06) 0%, transparent 60%),
+      var(--sand);
+    position: relative;
+    overflow: hidden;
+  }
+
+  #hero::before {
+    content: '';
+    position: absolute;
+    top: -200px; right: -200px;
+    width: 700px; height: 700px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(13,126,110,0.06) 0%, transparent 70%);
+    pointer-events: none;
+  }
+
+  .hero-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    background: rgba(13,126,110,0.1);
+    border: 1px solid rgba(13,126,110,0.3);
+    color: var(--teal);
+    font-size: 0.8rem;
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    margin-bottom: 1.5rem;
+    width: fit-content;
+  }
+
+  .hero-badge::before {
+    content: '';
+    width: 7px; height: 7px;
+    background: var(--teal);
+    border-radius: 50%;
+    animation: pulse 2s infinite;
+  }
+
+  @keyframes pulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.5; transform: scale(0.85); }
+  }
+
+  .hero-name {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(2.8rem, 5vw, 4.2rem);
+    font-weight: 700;
+    line-height: 1.1;
+    color: var(--navy);
+    margin-bottom: 0.5rem;
+  }
+
+  .hero-name em {
+    font-style: italic;
+    color: var(--teal);
+  }
+
+  .hero-title {
+    font-size: 1.05rem;
+    font-weight: 500;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+    margin-bottom: 1.5rem;
+  }
+
+  .hero-title span {
+    color: var(--ink);
+    font-weight: 600;
+  }
+
+  .hero-desc {
+    font-size: 1.05rem;
+    color: var(--ink);
+    max-width: 560px;
+    margin-bottom: 2.5rem;
+    line-height: 1.75;
+  }
+
+  .hero-desc strong { color: var(--teal); font-weight: 600; }
+
+  .hero-ctas {
+    display: flex; gap: 1rem; flex-wrap: wrap;
+    margin-bottom: 3rem;
+  }
+
+  .btn-primary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: var(--navy);
+    color: var(--white);
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, transform 0.15s;
+  }
+  .btn-primary:hover { background: var(--navy-mid); transform: translateY(-1px); }
+
+  .btn-secondary {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    background: transparent;
+    color: var(--teal);
+    border: 1.5px solid var(--teal);
+    padding: 0.8rem 1.8rem;
+    border-radius: 6px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: background 0.2s, color 0.2s, transform 0.15s;
+  }
+  .btn-secondary:hover { background: var(--teal); color: var(--white); transform: translateY(-1px); }
+
+  .hero-socials {
+    display: flex; gap: 1.2rem; align-items: center;
+  }
+
+  .social-link {
+    display: flex; align-items: center; gap: 0.4rem;
+    color: var(--mute);
+    text-decoration: none;
+    font-size: 0.85rem;
+    font-weight: 500;
+    transition: color 0.2s;
+  }
+  .social-link:hover { color: var(--teal); }
+
+  .social-link svg { width: 18px; height: 18px; }
+
+  /* Hero card */
+  .hero-card {
+    background: var(--white);
+    border-radius: 20px;
+    padding: 2.5rem;
+    box-shadow: 0 20px 60px rgba(15,45,69,0.12), 0 4px 16px rgba(15,45,69,0.06);
+    border: 1px solid rgba(13,126,110,0.1);
+    position: relative;
+  }
+
+  .hero-avatar {
+    width: 90px; height: 90px;
+    background: linear-gradient(135deg, var(--teal), var(--navy));
+    border-radius: 50%;
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Playfair Display', serif;
+    font-size: 2rem;
+    font-weight: 700;
+    color: var(--white);
+    margin: 0 auto 1.5rem;
+    letter-spacing: 0.02em;
+  }
+
+  .hero-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.2rem;
+    color: var(--navy);
+    text-align: center;
+    margin-bottom: 0.25rem;
+  }
+
+  .hero-card .card-role {
+    font-size: 0.82rem;
+    color: var(--teal);
+    font-weight: 600;
+    text-align: center;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    margin-bottom: 2rem;
+  }
+
+  .stat-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1rem;
+  }
+
+  .stat-item {
+    background: var(--sand);
+    border-radius: 10px;
+    padding: 1rem;
+    text-align: center;
+    border: 1px solid var(--warm);
+  }
+
+  .stat-num {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--teal);
+    line-height: 1;
+    margin-bottom: 0.3rem;
+  }
+
+  .stat-label {
+    font-size: 0.72rem;
+    color: var(--mute);
+    font-weight: 500;
+    line-height: 1.3;
+  }
+
+  /* ── SECTIONS ────────────────────────────────────────────────────── */
+  section { padding: 6rem 5rem; }
+
+  .section-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: var(--teal);
+    margin-bottom: 0.75rem;
+  }
+
+  .section-title {
+    font-family: 'Playfair Display', serif;
+    font-size: clamp(1.8rem, 3vw, 2.6rem);
+    color: var(--navy);
+    font-weight: 700;
+    line-height: 1.2;
+    margin-bottom: 1rem;
+  }
+
+  .section-title em { font-style: italic; color: var(--teal); }
+
+  /* ── ABOUT ───────────────────────────────────────────────────────── */
+  #about {
+    background: var(--white);
+  }
+
+  .about-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 5rem;
+    align-items: start;
+    margin-top: 3rem;
+  }
+
+  .about-text p {
+    font-size: 1rem;
+    color: var(--ink);
+    margin-bottom: 1.2rem;
+    line-height: 1.8;
+  }
+
+  .about-text strong { color: var(--teal); font-weight: 600; }
+
+  .about-tags {
+    display: flex; flex-wrap: wrap; gap: 0.5rem;
+    margin-top: 1.5rem;
+  }
+
+  .tag {
+    background: var(--teal-pale);
+    color: var(--teal);
+    font-size: 0.78rem;
+    font-weight: 600;
+    padding: 0.35rem 0.85rem;
+    border-radius: 100px;
+    letter-spacing: 0.02em;
+  }
+
+  .about-highlights {
+    display: flex; flex-direction: column; gap: 1.5rem;
+  }
+
+  .highlight-card {
+    background: var(--sand);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-left: 4px solid var(--teal);
+  }
+
+  .highlight-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+    display: flex; align-items: center; gap: 0.5rem;
+  }
+
+  .highlight-card p {
+    font-size: 0.88rem;
+    color: var(--mute);
+    line-height: 1.6;
+  }
+
+  /* ── RESEARCH / PROJECTS ─────────────────────────────────────────── */
+  #projects { background: var(--sand); }
+
+  .projects-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+    gap: 1.5rem;
+    margin-top: 3rem;
+  }
+
+  .project-card {
+    background: var(--white);
+    border-radius: 14px;
+    padding: 1.8rem;
+    border: 1px solid var(--warm);
+    transition: transform 0.2s, box-shadow 0.2s;
+    display: flex; flex-direction: column;
+  }
+
+  .project-card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 40px rgba(15,45,69,0.1);
+  }
+
+  .project-tags {
+    display: flex; gap: 0.4rem; flex-wrap: wrap;
+    margin-bottom: 1rem;
+  }
+
+  .ptag {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 0.25rem 0.65rem;
+    border-radius: 4px;
+  }
+
+  .ptag-teal  { background: rgba(13,126,110,0.1); color: var(--teal); }
+  .ptag-navy  { background: rgba(15,45,69,0.1);   color: var(--navy); }
+  .ptag-accent{ background: rgba(200,99,58,0.1);  color: var(--accent); }
+  .ptag-gold  { background: rgba(184,150,46,0.1); color: var(--gold); }
+
+  .project-card h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 1.1rem;
+    color: var(--navy);
+    margin-bottom: 0.6rem;
+    line-height: 1.3;
+  }
+
+  .project-card p {
+    font-size: 0.88rem;
+    color: var(--mute);
+    line-height: 1.65;
+    flex: 1;
+    margin-bottom: 1.2rem;
+  }
+
+  .project-finding {
+    background: var(--teal-pale);
+    border-radius: 8px;
+    padding: 0.75rem 1rem;
+    margin-bottom: 1.2rem;
+    font-size: 0.82rem;
+    color: var(--teal);
+    font-weight: 600;
+  }
+
+  .project-finding span { color: var(--ink); font-weight: 400; }
+
+  .project-link {
+    display: inline-flex; align-items: center; gap: 0.35rem;
+    color: var(--teal);
+    text-decoration: none;
+    font-size: 0.84rem;
+    font-weight: 600;
+    margin-top: auto;
+    transition: gap 0.2s;
+  }
+  .project-link:hover { gap: 0.6rem; }
+
+  /* ── SKILLS ──────────────────────────────────────────────────────── */
+  #skills { background: var(--navy); }
+
+  #skills .section-label { color: var(--teal-lt); }
+  #skills .section-title { color: var(--white); }
+  #skills .section-title em { color: var(--teal-lt); }
+
+  .skills-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .skill-card {
+    background: rgba(255,255,255,0.06);
+    border: 1px solid rgba(13,126,110,0.25);
+    border-radius: 12px;
+    padding: 1.5rem;
+    transition: background 0.2s, border-color 0.2s;
+  }
+
+  .skill-card:hover {
+    background: rgba(13,126,110,0.12);
+    border-color: rgba(13,126,110,0.5);
+  }
+
+  .skill-icon {
+    font-size: 1.6rem;
+    margin-bottom: 0.75rem;
+  }
+
+  .skill-card h4 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--white);
+    margin-bottom: 0.35rem;
+  }
+
+  .skill-card p {
+    font-size: 0.82rem;
+    color: rgba(255,255,255,0.55);
+    line-height: 1.6;
+  }
+
+  .skill-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    margin-top: 0.75rem;
+  }
+
+  .badge-primary { background: var(--teal); color: var(--white); }
+  .badge-gold    { background: var(--gold); color: var(--white); }
+
+  .skills-misc {
+    margin-top: 2.5rem;
+    display: flex; flex-wrap: wrap; gap: 0.6rem;
+  }
+
+  .misc-tag {
+    background: rgba(255,255,255,0.08);
+    color: rgba(255,255,255,0.7);
+    font-size: 0.78rem;
+    font-weight: 500;
+    padding: 0.4rem 1rem;
+    border-radius: 100px;
+    border: 1px solid rgba(255,255,255,0.12);
+  }
+
+  /* ── EXPERIENCE ──────────────────────────────────────────────────── */
+  #experience { background: var(--white); }
+
+  .timeline {
+    margin-top: 3rem;
+    position: relative;
+    padding-left: 2rem;
+  }
+
+  .timeline::before {
+    content: '';
+    position: absolute;
+    left: 0; top: 8px; bottom: 8px;
+    width: 2px;
+    background: linear-gradient(to bottom, var(--teal), var(--warm));
+  }
+
+  .timeline-item {
+    position: relative;
+    margin-bottom: 3rem;
+    padding-left: 2rem;
+  }
+
+  .timeline-item::before {
+    content: '';
+    position: absolute;
+    left: -2.45rem; top: 8px;
+    width: 12px; height: 12px;
+    background: var(--teal);
+    border-radius: 50%;
+    border: 3px solid var(--white);
+    box-shadow: 0 0 0 2px var(--teal);
+  }
+
+  .timeline-meta {
+    display: flex; align-items: center; gap: 1rem;
+    flex-wrap: wrap;
+    margin-bottom: 0.5rem;
+  }
+
+  .timeline-date {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.75rem;
+    color: var(--teal);
+    font-weight: 500;
+    background: var(--teal-pale);
+    padding: 0.2rem 0.7rem;
+    border-radius: 4px;
+  }
+
+  .timeline-org {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--mute);
+    letter-spacing: 0.04em;
+  }
+
+  .timeline-item h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.4rem;
+  }
+
+  .timeline-item ul {
+    list-style: none;
+    padding: 0;
+    margin-top: 0.6rem;
+  }
+
+  .timeline-item li {
+    font-size: 0.88rem;
+    color: var(--mute);
+    padding: 0.25rem 0 0.25rem 1.2rem;
+    position: relative;
+    line-height: 1.6;
+  }
+
+  .timeline-item li::before {
+    content: '→';
+    position: absolute;
+    left: 0;
+    color: var(--teal);
+    font-size: 0.75rem;
+  }
+
+  .timeline-item li strong { color: var(--ink); font-weight: 600; }
+
+  .timeline-tags {
+    display: flex; gap: 0.4rem; flex-wrap: wrap; margin-top: 0.75rem;
+  }
+
+  .ttag {
+    font-size: 0.7rem;
+    font-weight: 600;
+    background: var(--sand);
+    color: var(--navy);
+    padding: 0.2rem 0.6rem;
+    border-radius: 4px;
+    letter-spacing: 0.02em;
+  }
+
+  /* ── PUBLICATIONS ────────────────────────────────────────────────── */
+  #publications { background: var(--sand); }
+
+  .pub-list {
+    margin-top: 3rem;
+    display: flex; flex-direction: column; gap: 1.2rem;
+  }
+
+  .pub-item {
+    background: var(--white);
+    border-radius: 12px;
+    padding: 1.5rem 1.8rem;
+    border-left: 4px solid var(--teal);
+    transition: transform 0.15s;
+  }
+
+  .pub-item:hover { transform: translateX(3px); }
+
+  .pub-item p {
+    font-size: 0.9rem;
+    color: var(--ink);
+    line-height: 1.7;
+  }
+
+  .pub-item strong { color: var(--teal); }
+
+  .pub-item a {
+    color: var(--teal);
+    text-decoration: none;
+    font-size: 0.82rem;
+    font-weight: 600;
+    display: inline-flex; align-items: center; gap: 0.3rem;
+    margin-top: 0.5rem;
+  }
+  .pub-item a:hover { text-decoration: underline; }
+
+  .pub-journal {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+
+  /* ── EDUCATION ───────────────────────────────────────────────────── */
+  #education { background: var(--white); }
+
+  .edu-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 1.2rem;
+    margin-top: 3rem;
+  }
+
+  .edu-card {
+    background: var(--sand);
+    border-radius: 12px;
+    padding: 1.5rem;
+    border-top: 4px solid var(--teal);
+  }
+
+  .edu-card .degree {
+    font-family: 'Playfair Display', serif;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--navy);
+    margin-bottom: 0.3rem;
+    line-height: 1.3;
+  }
+
+  .edu-card .school {
+    font-size: 0.85rem;
+    font-weight: 600;
+    color: var(--teal);
+    margin-bottom: 0.2rem;
+  }
+
+  .edu-card .year {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.78rem;
+    color: var(--mute);
+  }
+
+  .edu-card .gpa {
+    display: inline-block;
+    margin-top: 0.6rem;
+    font-size: 0.75rem;
+    font-weight: 700;
+    background: var(--teal-pale);
+    color: var(--teal);
+    padding: 0.2rem 0.65rem;
+    border-radius: 4px;
+  }
+
+  /* ── CONTACT ─────────────────────────────────────────────────────── */
+  #contact {
+    background: linear-gradient(135deg, var(--navy) 0%, var(--navy-mid) 100%);
+    text-align: center;
+    padding: 6rem 5rem;
+  }
+
+  #contact .section-label { color: var(--teal-lt); }
+  #contact .section-title { color: var(--white); }
+  #contact .section-title em { color: var(--teal-lt); }
+
+  .contact-sub {
+    font-size: 1rem;
+    color: rgba(255,255,255,0.65);
+    max-width: 500px;
+    margin: 1rem auto 2.5rem;
+    line-height: 1.7;
+  }
+
+  .contact-links {
+    display: flex; justify-content: center; gap: 1.5rem; flex-wrap: wrap;
+    margin-bottom: 2rem;
+  }
+
+  .contact-btn {
+    display: inline-flex; align-items: center; gap: 0.5rem;
+    padding: 0.8rem 1.8rem;
+    border-radius: 8px;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: transform 0.2s, opacity 0.2s;
+  }
+  .contact-btn:hover { transform: translateY(-2px); opacity: 0.9; }
+
+  .contact-btn-teal { background: var(--teal); color: var(--white); }
+  .contact-btn-outline {
+    background: transparent;
+    color: var(--white);
+    border: 1.5px solid rgba(255,255,255,0.3);
+  }
+
+  .contact-email {
+    font-family: 'DM Mono', monospace;
+    font-size: 0.9rem;
+    color: rgba(255,255,255,0.55);
+    margin-top: 1rem;
+  }
+
+  .contact-email a { color: var(--teal-lt); text-decoration: none; }
+
+  /* ── FOOTER ──────────────────────────────────────────────────────── */
+  footer {
+    background: rgba(0,0,0,0.3);
+    text-align: center;
+    padding: 1.2rem;
+    font-size: 0.78rem;
+    color: rgba(255,255,255,0.3);
+  }
+
+  /* ── DIVIDER ─────────────────────────────────────────────────────── */
+  .divider {
+    width: 60px; height: 3px;
+    background: linear-gradient(90deg, var(--teal), var(--teal-lt));
+    border-radius: 2px;
+    margin-bottom: 1rem;
+  }
+
+  /* ── ANIMATIONS ──────────────────────────────────────────────────── */
+  .fade-in {
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+  }
+  .fade-in.visible { opacity: 1; transform: none; }
+
+  /* ── RESPONSIVE ──────────────────────────────────────────────────── */
+  @media (max-width: 900px) {
+    nav { padding: 0 1.5rem; }
+    .nav-links { display: none; }
+    #hero { grid-template-columns: 1fr; padding: 100px 2rem 60px; }
+    .hero-card { display: none; }
+    section { padding: 4rem 2rem; }
+    .about-grid { grid-template-columns: 1fr; gap: 2.5rem; }
+    #contact { padding: 4rem 2rem; }
+  }
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-logo" href="#hero">Pyone <span>Paing</span></a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#projects">Research</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#publications">Publications</a></li>
+    <li><a href="#contact" class="nav-cv">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="hero">
+  <div class="hero-content fade-in">
+    <div class="hero-badge">Open to Research Collaborations</div>
+    <h1 class="hero-name">Pyone<br><em>Yadanar Paing</em></h1>
+    <p class="hero-title"><span>Epidemiologist</span> · PhD Health Metrics · IHME Researcher</p>
+    <p class="hero-desc">
+      I build <strong>Bayesian small area models</strong> to estimate disease burden at the county level — turning complex health data into evidence that drives <strong>equitable policy</strong>. With 10+ years across global health, Tribal epidemiology, and health metrics, I connect rigorous methods to real-world impact.
+    </p>
+    <div class="hero-ctas">
+      <a href="#projects" class="btn-primary">View Research ↓</a>
+      <a href="https://github.com/ppaing2" target="_blank" class="btn-secondary">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+        GitHub
+      </a>
+    </div>
+    <div class="hero-socials">
+      <a href="https://www.linkedin.com/in/pyone-yadanar-paing/" target="_blank" class="social-link">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+        LinkedIn
+      </a>
+      <a href="mailto:pyoneyadanarpaing.uch@gmail.com" class="social-link">
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+        Email
+      </a>
+    </div>
+  </div>
+
+  <div class="hero-card fade-in" style="transition-delay:0.2s">
+    <div class="hero-avatar">PYP</div>
+    <h3>Pyone Yadanar Paing</h3>
+    <p class="card-role">PhD · IHME · UW Seattle</p>
+    <div class="stat-grid">
+      <div class="stat-item">
+        <div class="stat-num">10+</div>
+        <div class="stat-label">Years public health experience</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">3</div>
+        <div class="stat-label">Peer-reviewed publications</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">$455K</div>
+        <div class="stat-label">Grant secured</div>
+      </div>
+      <div class="stat-item">
+        <div class="stat-num">5+</div>
+        <div class="stat-label">Countries & contexts</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="section-label">About</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Bridging methods<br>and <em>equity</em></h2>
+
+  <div class="about-grid">
+    <div class="about-text fade-in">
+      <p>
+        I am a <strong>PhD student in Global Health Metrics and Implementation Science</strong> at the University of Washington and a Graduate Research Assistant at the Institute for Health Metrics and Evaluation (IHME), where I develop small area estimation models for systolic blood pressure and hypertension at the US county level.
+      </p>
+      <p>
+        Before returning to academia, I spent a decade as an epidemiologist across Myanmar, Seattle, and Washington State — leading NCD policy programs at HelpAge International, building Tribal health equity infrastructure at WA DOH, and providing analytical consultation to Urban Indian Organizations nationwide.
+      </p>
+      <p>
+        My work sits at the intersection of <strong>advanced statistical methods</strong> (TMB, Bayesian hierarchical models, spatial analysis) and deeply applied public health — I care as much about what the estimates mean for communities as about how they were produced.
+      </p>
+      <div class="about-tags">
+        <span class="tag">Small Area Estimation</span>
+        <span class="tag">Bayesian Methods</span>
+        <span class="tag">Health Equity</span>
+        <span class="tag">Tribal Epidemiology</span>
+        <span class="tag">GIS & Spatial Analysis</span>
+        <span class="tag">NCD Epidemiology</span>
+        <span class="tag">Data Sovereignty</span>
+        <span class="tag">Policy Translation</span>
+      </div>
+    </div>
+
+    <div class="about-highlights fade-in" style="transition-delay:0.15s">
+      <div class="highlight-card">
+        <h4>📐 Rigorous Methods</h4>
+        <p>TMB-based latent log-normal models for SBP estimation at the US county level, incorporating race/ethnicity and education stratification using BRFSS, Medicare, and NHANES data.</p>
+      </div>
+      <div class="highlight-card">
+        <h4>🗺️ Spatial Equity Focus</h4>
+        <p>Built county-level chronic disease health equity ArcGIS dashboards and conducted network analysis on racial and geographic disparities among American Indian/Alaska Native populations.</p>
+      </div>
+      <div class="highlight-card">
+        <h4>🌏 Global Perspective</h4>
+        <p>Led NCD policy research across Myanmar, secured $455K in funding, and co-authored the country's National Strategic Plan on NCDs — experience that shapes how I think about evidence-to-policy translation.</p>
+      </div>
+      <div class="highlight-card" style="border-left-color: var(--accent);">
+        <h4>📍 Seattle, WA</h4>
+        <p>Based at UW Seattle. Open to research collaborations, consulting, and speaking on health equity methods and Tribal data sovereignty.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESEARCH / PROJECTS -->
+<section id="projects">
+  <div class="section-label">Research & Projects</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Selected <em>work</em></h2>
+
+  <div class="projects-grid">
+
+    <div class="project-card fade-in">
+      <div class="project-tags">
+        <span class="ptag ptag-teal">TMB</span>
+        <span class="ptag ptag-navy">Bayesian</span>
+        <span class="ptag ptag-gold">IHME</span>
+      </div>
+      <h3>Small Area Estimation of Systolic Blood Pressure</h3>
+      <p>Developing TMB-based latent log-normal models (Models 4–6) to estimate mean SBP and hypertension prevalence at the US county level by race/ethnicity and education. Models incorporate BRFSS, Medicare, NHANES, and MarketScan data with spatial and temporal random effects.</p>
+      <div class="project-finding">Key innovation: <span>Heteroscedastic SD model links variability to mean SBP, enabling full distributional estimation including proportion above clinical thresholds.</span></div>
+      <a href="https://github.com/ppaing2" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.1s">
+      <div class="project-tags">
+        <span class="ptag ptag-teal">R · JAGS</span>
+        <span class="ptag ptag-navy">Bayesian</span>
+        <span class="ptag ptag-accent">NHANES</span>
+      </div>
+      <h3>Bayesian HbA1c Analysis — Sex, Age & Diabetes</h3>
+      <p>Bayesian hierarchical model for HbA1c using NHANES data. Iterated from normal to log-normal likelihood with heteroscedastic group-specific residual SDs, incorporating self-reported diabetes diagnosis. Prior specification based on clinical domain knowledge.</p>
+      <div class="project-finding">Finding: <span>Sex offset β₂ = 0.073 credibly above zero; sex × age interaction not credible after correcting σ prior — honest inference from proper prior specification.</span></div>
+      <a href="https://github.com/ppaing2" target="_blank" class="project-link">View on GitHub →</a>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.2s">
+      <div class="project-tags">
+        <span class="ptag ptag-teal">ArcGIS</span>
+        <span class="ptag ptag-navy">Health Equity</span>
+        <span class="ptag ptag-gold">WA DOH</span>
+      </div>
+      <h3>Tribal Health Equity Dashboard</h3>
+      <p>Built county-level chronic disease health equity ArcGIS Online dashboard for Washington State DOH. Developed epidemiology best practices guidance for reporting Tribal data and multiple racial/ethnic identities. Led cross-sector data equity workgroup.</p>
+      <div class="project-finding">Impact: <span>Adopted by WA DOH as standard for Tribal data reporting. Delivered data sovereignty training to all DOH epidemiology staff.</span></div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.3s">
+      <div class="project-tags">
+        <span class="ptag ptag-teal">Survey Data</span>
+        <span class="ptag ptag-navy">AIAN</span>
+        <span class="ptag ptag-accent">UIHI</span>
+      </div>
+      <h3>AIAN Chronic Disease Disparities Analysis</h3>
+      <p>Analyzed racial and geographic disparities in chronic disease burden among American Indian/Alaska Native populations using BRFSS, PRAMS, Healthy Youth Survey, and vital statistics. Created GIS maps and network analysis visualizations for policy advocacy.</p>
+      <div class="project-finding">Impact: <span>Findings translated into policy recommendations for Urban Indian Organizations across 12 states.</span></div>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.4s">
+      <div class="project-tags">
+        <span class="ptag ptag-gold">Myanmar</span>
+        <span class="ptag ptag-navy">Cost-Effectiveness</span>
+        <span class="ptag ptag-accent">Lancet</span>
+      </div>
+      <h3>CVD Screening Cost-Effectiveness — Myanmar</h3>
+      <p>Co-authored economic modelling study on cost-effectiveness and budget impact analysis of cardiovascular disease screening and preventive interventions in Myanmar. Published in The Lancet Regional Health – Southeast Asia.</p>
+      <div class="project-finding">Published: <span>Win, Mao, Traill, Kyaw, Paing et al. (2024). The Lancet Regional Health – Southeast Asia, 26.</span></div>
+      <a href="https://doi.org/10.1016/j.lansea.2024.100394" target="_blank" class="project-link">Read Paper →</a>
+    </div>
+
+    <div class="project-card fade-in" style="transition-delay:0.5s">
+      <div class="project-tags">
+        <span class="ptag ptag-teal">JAHA</span>
+        <span class="ptag ptag-navy">Cardiovascular</span>
+        <span class="ptag ptag-gold">SHFS</span>
+      </div>
+      <h3>Life's Essential 8 & CVD in SHFS</h3>
+      <p>First-authored study on association between achievement of AHA's Life's Essential 8 goals and incident cardiovascular disease in the Strong Heart Family Study — a longitudinal study of American Indian communities.</p>
+      <div class="project-finding">Published: <span>Paing et al. Journal of the American Heart Association, e032918. DOI: 10.1161/JAHA.123.032918</span></div>
+      <a href="https://doi.org/10.1161/JAHA.123.032918" target="_blank" class="project-link">Read Paper →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="section-label">Technical Toolkit</div>
+  <div class="divider" style="background: linear-gradient(90deg, var(--teal-lt), var(--teal));"></div>
+  <h2 class="section-title">Skills &amp; <em>Tools</em></h2>
+
+  <div class="skills-grid">
+    <div class="skill-card fade-in">
+      <div class="skill-icon">📊</div>
+      <h4>R / TMB</h4>
+      <p>Primary language for all statistical modelling. TMB for automatic differentiation and LAPLACE approximation in latent Gaussian models. data.table, ggplot2, JAGS.</p>
+      <span class="skill-badge badge-primary">Primary</span>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.05s">
+      <div class="skill-icon">🔢</div>
+      <h4>Bayesian Methods</h4>
+      <p>JAGS/MCMC for posterior inference. Prior predictive checks, posterior predictive checks, MCMC diagnostics (R̂, ESS). Hierarchical and heteroscedastic models.</p>
+      <span class="skill-badge badge-primary">Core Expertise</span>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.1s">
+      <div class="skill-icon">🗺️</div>
+      <h4>GIS & Spatial Analysis</h4>
+      <p>ArcGIS Online and ArcGIS Pro for health equity dashboards. Network analysis, choropleth mapping, county-level spatial visualization of health disparities.</p>
+      <span class="skill-badge badge-gold">GIS Ambassador</span>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.15s">
+      <div class="skill-icon">🐍</div>
+      <h4>Python / SQL</h4>
+      <p>Python for data processing and pipeline automation. SQL for large-scale data extraction and transformation from health databases.</p>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.2s">
+      <div class="skill-icon">📈</div>
+      <h4>Stata / SAS / SPSS</h4>
+      <p>Survey data analysis using complex sample design methods. Regression modelling, survival analysis, and descriptive epidemiology across multiple platforms.</p>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.25s">
+      <div class="skill-icon">📋</div>
+      <h4>Tableau / Visualization</h4>
+      <p>Interactive dashboards for public health surveillance. Data storytelling for non-technical policy audiences at state and federal levels.</p>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.3s">
+      <div class="skill-icon">🔬</div>
+      <h4>Qualitative Methods</h4>
+      <p>NVivo and Dedoose for qualitative data analysis. Key informant interviews, focus group discussions, concept mapping, and thematic analysis.</p>
+    </div>
+    <div class="skill-card fade-in" style="transition-delay:0.35s">
+      <div class="skill-icon">⚙️</div>
+      <h4>HPC / Cluster Computing</h4>
+      <p>SLURM job scheduling, Singularity containers, shell scripting. Parallel prediction pipelines on IHME's compute cluster for county-level model runs.</p>
+    </div>
+  </div>
+
+  <div class="skills-misc">
+    <span class="misc-tag">RedCap</span>
+    <span class="misc-tag">Version Control (Git)</span>
+    <span class="misc-tag">Command Line</span>
+    <span class="misc-tag">Small Area Estimation</span>
+    <span class="misc-tag">LCAR / ICAR Models</span>
+    <span class="misc-tag">Survey Sampling</span>
+    <span class="misc-tag">Health Policy Analysis</span>
+    <span class="misc-tag">Grant Writing</span>
+    <span class="misc-tag">Systematic Review</span>
+    <span class="misc-tag">Data Sovereignty</span>
+    <span class="misc-tag">Burmese (Native)</span>
+    <span class="misc-tag">English (Professional)</span>
+  </div>
+</section>
+
+<!-- EXPERIENCE -->
+<section id="experience">
+  <div class="section-label">Experience</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Work <em>history</em></h2>
+
+  <div class="timeline">
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <span class="timeline-date">Sep 2025 – Present</span>
+        <span class="timeline-org">IHME · University of Washington</span>
+      </div>
+      <h3>Graduate Research Assistant</h3>
+      <div class="timeline-tags">
+        <span class="ttag">TMB</span><span class="ttag">R</span><span class="ttag">Small Area Estimation</span><span class="ttag">SBP Modelling</span>
+      </div>
+      <ul>
+        <li>Develop TMB-based latent log-normal models for county-level systolic blood pressure estimation by race/ethnicity and education</li>
+        <li>Model reported hypertension diagnosis and mean SBP using BRFSS, Medicare, NHANES, and MarketScan data</li>
+        <li>Build and debug prediction pipelines on IHME compute cluster (SLURM, Singularity)</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <span class="timeline-date">Jun 2024 – Present</span>
+        <span class="timeline-org">Washington State Department of Health</span>
+      </div>
+      <h3>Epidemiologist II</h3>
+      <div class="timeline-tags">
+        <span class="ttag">ArcGIS</span><span class="ttag">Tribal Data</span><span class="ttag">Health Equity</span><span class="ttag">Policy</span>
+      </div>
+      <ul>
+        <li>Built county-level chronic disease health equity ArcGIS Online dashboard aligned with Tribal priorities</li>
+        <li>Developed and delivered Tribal data sovereignty training series to WA DOH staff statewide</li>
+        <li>Authored epidemiology best practices guidance for reporting Tribal data and multiple racial/ethnic identities</li>
+        <li>Co-led cross-sector data equity workgroup and facilitated Tribal assessment workshops with Northwest Portland Area Indian Health Board</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <span class="timeline-date">Jul 2023 – Jun 2024</span>
+        <span class="timeline-org">Urban Indian Health Institute</span>
+      </div>
+      <h3>Epidemiologist</h3>
+      <div class="timeline-tags">
+        <span class="ttag">BRFSS</span><span class="ttag">GIS</span><span class="ttag">AIAN Health</span><span class="ttag">Policy</span>
+      </div>
+      <ul>
+        <li>Analyzed health disparities among American Indian/Alaska Native populations using BRFSS, PRAMS, surveillance, and clinical data</li>
+        <li>Created GIS maps and network analysis visualizing racial and geographic disparities in chronic disease</li>
+        <li>Evaluated Traditional Indian Medicine services program and provided policy advocacy recommendations</li>
+        <li>Provided epidemiological consultation to Urban Indian Organizations across the United States</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <span class="timeline-date">Nov 2020 – Sep 2021</span>
+        <span class="timeline-org">Community Partners International · Myanmar</span>
+      </div>
+      <h3>Program Coordinator</h3>
+      <div class="timeline-tags">
+        <span class="ttag">Grant Writing</span><span class="ttag">Policy Research</span><span class="ttag">CVD</span>
+      </div>
+      <ul>
+        <li>Led establishment of Knowledge Broker Group Myanmar for evidence-based public health</li>
+        <li><strong>Successfully secured USD $455,504 project grant</strong> funded by Takeda and Access to Health Fund</li>
+        <li>Authored manuscripts on health system cost-effectiveness of cardiovascular disease interventions</li>
+      </ul>
+    </div>
+
+    <div class="timeline-item fade-in">
+      <div class="timeline-meta">
+        <span class="timeline-date">Jun 2017 – Oct 2020</span>
+        <span class="timeline-org">HelpAge International Myanmar</span>
+      </div>
+      <h3>Project Coordinator</h3>
+      <div class="timeline-tags">
+        <span class="ttag">NCD Policy</span><span class="ttag">Research</span><span class="ttag">Myanmar</span>
+      </div>
+      <ul>
+        <li>Supported Ministry of Health to develop National Strategic Plan on NCDs (2017–2021) and National Mental Health Policy (2018)</li>
+        <li>Coordinated NCD epidemiology and health system research; supervised field enumerators</li>
+        <li>Translated research evidence into policy briefs on NCD risk factors, prevention, and services</li>
+      </ul>
+    </div>
+
+  </div>
+</section>
+
+<!-- PUBLICATIONS -->
+<section id="publications">
+  <div class="section-label">Publications & Policy Briefs</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Peer-reviewed <em>work</em></h2>
+
+  <div class="pub-list">
+
+    <div class="pub-item fade-in">
+      <div class="pub-journal">Journal of the American Heart Association</div>
+      <p><strong>Paing, P. Y.</strong>, Littman, A. J., Reese, J. A., Sitlani, C. M., Umans, J. G., Cole, S. A., Zhang, Y., Ali, T., &amp; Fretts, A. M. Association of Achievement of the American Heart Association's Life's Essential 8 Goals with Incident Cardiovascular Diseases in the SHFS.</p>
+      <a href="https://doi.org/10.1161/JAHA.123.032918" target="_blank">Read paper → DOI: 10.1161/JAHA.123.032918</a>
+    </div>
+
+    <div class="pub-item fade-in" style="transition-delay:0.1s">
+      <div class="pub-journal">The Lancet Regional Health – Southeast Asia</div>
+      <p>Win, Z. M., Mao, W., Traill, T., Kyaw, Z. L., <strong>Paing, P. Y.</strong>, Ogbuoji, O., &amp; Yamey, G. (2024). Cost-effectiveness and budget impact analysis of screening and preventive interventions for cardiovascular disease in Myanmar: An economic modelling study.</p>
+      <a href="https://doi.org/10.1016/j.lansea.2024.100394" target="_blank">Read paper → DOI: 10.1016/j.lansea.2024.100394</a>
+    </div>
+
+    <div class="pub-item fade-in" style="transition-delay:0.2s">
+      <div class="pub-journal">Health Research Policy and Systems</div>
+      <p><strong>Paing, P. Y.</strong>, Kyaw, Z. L., Schojan, M., Traill, T., et al. (2021). Development of a knowledge broker group to support evidence-informed policy: Lessons learned from Myanmar.</p>
+      <a href="https://doi.org/10.1186/s12961-021-00806-x" target="_blank">Read paper → DOI: 10.1186/s12961-021-00806-x</a>
+    </div>
+
+    <div class="pub-item fade-in" style="transition-delay:0.3s; border-left-color: var(--gold);">
+      <div class="pub-journal" style="color: var(--gold);">Policy Briefs — HelpAge International</div>
+      <p>Five policy briefs on NCD challenges, mental health, and universal health coverage in Myanmar — translated into actionable guidance for the Ministry of Health and international partners.</p>
+      <a href="https://www.helpage.org/download/5e86c027cb3cb" target="_blank">View policy briefs →</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="section-label">Education</div>
+  <div class="divider"></div>
+  <h2 class="section-title">Academic <em>background</em></h2>
+
+  <div class="edu-grid">
+    <div class="edu-card fade-in">
+      <div class="degree">PhD Global Health Metrics &amp; Implementation Science</div>
+      <div class="school">University of Washington, Seattle</div>
+      <div class="year">September 2025 – Present</div>
+      <span class="gpa">Metrics Track</span>
+    </div>
+    <div class="edu-card fade-in" style="transition-delay:0.1s">
+      <div class="degree">Master of Public Health in Epidemiology</div>
+      <div class="school">University of Washington, Seattle</div>
+      <div class="year">2023</div>
+      <span class="gpa">GPA 3.88 / 4.0</span>
+    </div>
+    <div class="edu-card fade-in" style="transition-delay:0.2s">
+      <div class="degree">Post-graduate Diploma in Research Studies</div>
+      <div class="school">Yangon University of Economics, Myanmar</div>
+      <div class="year">2020</div>
+      <span class="gpa">GPA 4.46 / 5.0</span>
+    </div>
+    <div class="edu-card fade-in" style="transition-delay:0.3s">
+      <div class="degree">Bachelor of Community Health</div>
+      <div class="school">University of Community Health, Magway, Myanmar</div>
+      <div class="year">2016</div>
+      <span class="gpa">Top of Class</span>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="section-label">Contact</div>
+  <h2 class="section-title">Let's <em>work together</em></h2>
+  <p class="contact-sub">Open to research collaborations, consulting on health equity methods, and speaking engagements on Tribal data sovereignty and small area estimation.</p>
+
+  <div class="contact-links">
+    <a href="https://www.linkedin.com/in/pyone-yadanar-paing/" target="_blank" class="contact-btn contact-btn-teal">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433a2.062 2.062 0 01-2.063-2.065 2.064 2.064 0 112.063 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/></svg>
+      LinkedIn
+    </a>
+    <a href="https://github.com/ppaing2" target="_blank" class="contact-btn contact-btn-outline">
+      <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.509 11.509 0 0112 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12z"/></svg>
+      GitHub
+    </a>
+    <a href="mailto:pyoneyadanarpaing.uch@gmail.com" class="contact-btn contact-btn-outline">
+      ✉ Email Me
+    </a>
+  </div>
+
+  <p class="contact-email">
+    <a href="mailto:pyoneyadanarpaing.uch@gmail.com">pyoneyadanarpaing.uch@gmail.com</a> · 206-532-9822
+  </p>
+</section>
+
+<footer>
+  © 2026 Pyone Yadanar Paing · Built for GitHub Pages
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver((entries) => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        e.target.classList.add('visible');
+        observer.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.1 });
+
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+</script>
+</body>
+</html>
